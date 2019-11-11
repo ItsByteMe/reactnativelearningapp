@@ -8,13 +8,17 @@ import {
   Button,
   TouchableOpacity,
   Image,
-  ScrollView
+  ScrollView,
+  ImageBackground
 } from "react-native";
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Ca_final_chapter2 from "./ca_final_chapter2";
 
+import Logo from './Logo.svg'
+import SvgUri from 'react-native-svg-uri';
+import Background from './browsetopics2/bg.png'
 
 const lecture_details = [
     {
@@ -50,10 +54,7 @@ export default function Ca_final_chapter1(props) {
 
     const playlist = lecture_details.map(function(lecture, index, arr) {
         return (
-          <TouchableOpacity key={index+'kumar'}
-            onPress={() =>{props.navigation.navigate("play_video", {link:lecture.video_link, lecture:lecture.lecture_name})}}
-            style={styles.course_item}
-          >
+          <TouchableOpacity key={index+'kumar'} onPress={() =>{props.navigation.navigate("play_video", {link:lecture.video_link, lecture:lecture.lecture_name})}} style={styles.course_item} >
             <Image source={{ uri: lecture.thumbnail }} style={styles.img_style} />
             <Text style={styles.course_name_style}> {lecture.lecture_name}</Text>
           </TouchableOpacity>
@@ -62,7 +63,9 @@ export default function Ca_final_chapter1(props) {
     
       return (
         <ScrollView style={styles.scroll_view_style}>
-    
+          <View style = {styles.logo_container}>
+            <SvgUri width = "66" height = "66" source = {Logo} />
+          </View>
           {playlist}
         </ScrollView>
       );
@@ -87,7 +90,8 @@ export default function Ca_final_chapter1(props) {
         marginLeft: 30
       },
       scroll_view_style: {
-        padding: 10
+        padding: 10,
+        backgroundColor: "#09121C"
       },
       course_item: {
         display: "flex",
@@ -103,13 +107,20 @@ export default function Ca_final_chapter1(props) {
         width: 50,
         height: 50,
         marginLeft: 10
-      }
+      },
+      logo_container: {
+        marginLeft: 33,
+        marginTop: 50, 
+        marginBottom: 50,
+        backgroundColor: "#09121C"
+      },
     });
     
     
     Ca_final_chapter1.navigationOptions = ({navigation})=>{
       return{
-          title:"CA Final: Chapter 1"
+         // title:"CA Final: Chapter 1",
+          header: null,
       }
     }
 
