@@ -68,7 +68,10 @@ export default function CaFinal(props) {
       <View style = {styles.logo_container}>
           <SvgUri width = "66" height = "66" source = {Logo} />
       </View>
-      {playlist}
+      <Text style = {{position: "absolute", top: 157, left: 45, fontWeight: "500", color: "#898F97", fontSize: 16, marginBottom: 348}}>All Chapters (10)</Text>
+      <View style = {{top: 48}}>
+        {playlist}
+      </View>
     </ScrollView>
   );
 }
@@ -110,6 +113,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent:'center',
     marginHorizontal: 33,
+    
   },
   img_style: {
     width: 50,
